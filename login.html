@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusaka Nusantara - Mlebet Akun</title>
+  <link rel="stylesheet" href="css/login.css">
+  <script src="js/login.js" defer></script>
+</head>
+<body>
+  <!-- Latar Belakang Pola Batik Kawung Native (Data-URI SVG) -->
+  <div class="batik-pattern-bg"></div>
+
+  <main class="login-container">
+    <!-- ================= SISI KIRI: BRANDING & ORNAMEN BATIK NEO-KERATON ================= -->
+    <section class="branding-side">
+      <div class="watermark-batik"></div>
+
+      <!-- Header Brand & Logo Batik Kawung -->
+      <div class="brand-header">
+        <div class="logo-wrapper">
+          <svg class="logo-batik-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="2 1"/>
+            <!-- 4 Kelopak Geometris Batik Kawung -->
+            <ellipse cx="24" cy="14" rx="7" ry="9" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.15)"/>
+            <ellipse cx="24" cy="34" rx="7" ry="9" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.15)"/>
+            <ellipse cx="14" cy="24" rx="9" ry="7" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.15)"/>
+            <ellipse cx="34" cy="24" rx="9" ry="7" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.15)"/>
+            <circle cx="24" cy="24" r="3.5" fill="#D4AF37"/>
+            <circle cx="24" cy="24" r="1.5" fill="#1B3B2B"/>
+          </svg>
+          <div class="logo-text-box">
+            <span class="aksara-jawa">ꦥꦸꦱꦏ</span>
+            <span class="logo-name">Pusaka Nusantara</span>
+          </div>
+        </div>
+        <p class="brand-tagline">Busana Adhi Luhung, Warisan Karaton Nusantara</p>
+      </div>
+
+      <!-- Ilustrasi Gunungan Wayang Kulit Native SVG -->
+      <div class="ornament-hero">
+        <svg class="gunungan-svg" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M120 12 L215 200 L170 200 L170 265 L70 265 L70 200 L25 200 Z" stroke="#D4AF37" stroke-width="2.5" fill="rgba(212, 175, 55, 0.06)"/>
+          <path d="M120 28 L198 190 L160 190 L160 255 L80 255 L80 190 L42 190 Z" stroke="#D4AF37" stroke-width="1" stroke-dasharray="3 3"/>
+          
+          <!-- Pintu Gapura Kamandungan Keraton -->
+          <rect x="98" y="200" width="44" height="55" rx="3" stroke="#D4AF37" stroke-width="1.5" fill="rgba(27, 59, 43, 0.4)"/>
+          <path d="M120 200 L120 255 M98 225 L142 225" stroke="#D4AF37" stroke-width="1"/>
+          
+          <!-- Cakra Kawung Tengah -->
+          <circle cx="120" cy="130" r="36" stroke="#D4AF37" stroke-width="1.8"/>
+          <ellipse cx="120" cy="115" rx="10" ry="14" stroke="#D4AF37" stroke-width="1.2" fill="rgba(212, 175, 55, 0.1)"/>
+          <ellipse cx="120" cy="145" rx="10" ry="14" stroke="#D4AF37" stroke-width="1.2" fill="rgba(212, 175, 55, 0.1)"/>
+          <ellipse cx="105" cy="130" rx="14" ry="10" stroke="#D4AF37" stroke-width="1.2" fill="rgba(212, 175, 55, 0.1)"/>
+          <ellipse cx="135" cy="130" rx="14" ry="10" stroke="#D4AF37" stroke-width="1.2" fill="rgba(212, 175, 55, 0.1)"/>
+          <circle cx="120" cy="130" r="4" fill="#D4AF37"/>
+          
+          <!-- Tajuk Mahkota -->
+          <path d="M120 35 L120 85 M105 55 L135 55" stroke="#D4AF37" stroke-width="1.5"/>
+          <circle cx="120" cy="35" r="3" fill="#D4AF37"/>
+        </svg>
+      </div>
+
+    </section>
+
+    <!-- ================= SISI KANAN: FORM LOGIN ================= -->
+    <section class="form-side">
+      <div class="login-card">
+        <div class="corner-batik-ornament">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 0 L60 40 C45 35 35 45 40 60 L0 60 C5 30 30 5 60 0 Z" fill="rgba(212, 175, 55, 0.08)"/>
+            <path d="M60 10 C40 15 15 40 10 60" stroke="#D4AF37" stroke-width="1.2" stroke-dasharray="2 2"/>
+            <circle cx="48" cy="12" r="3" fill="#D4AF37" opacity="0.6"/>
+          </svg>
+        </div>
+
+        <div class="card-header">
+          <span class="welcome-badge">ꦱꦸꦒꦼꦁꦫꦮꦸꦃ</span>
+          <h2>Mangga Pinarak</h2>
+          <p>Mlebet wonten akun panjenengan kanggé milih busana pusaka</p>
+        </div>
+
+        <!-- Alert Error Handling (Try...Catch) -->
+        <div id="error-alert" class="alert-box error" style="display: none;" role="alert">
+          <span id="error-message">Username utawi tembung sandi klintu.</span>
+        </div>
+
+        <!-- Form Login -->
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <div class="input-wrapper">
+              <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                placeholder="Input your Username" 
+                required 
+                autocomplete="username"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Input your Password" 
+                required 
+                autocomplete="current-password"
+              >
+            </div>
+          </div>
+
+          <button type="submit" id="btn-login" class="btn-primary">
+            <span class="btn-text">Login</span>
+            <span class="btn-spinner" style="display: none;"></span>
+          </button>
+        </form>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>

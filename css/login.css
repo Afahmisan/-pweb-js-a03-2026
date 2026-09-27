@@ -1,0 +1,401 @@
+/* DESIGN TOKENS: TEMA NEO-KERATON (60-30-10) */
+:root {
+  /* 60% Netral / Kain Mori */
+  --c-mori: #F8F6F0;
+  --c-mori-card: #FFFFFF;
+  --c-mori-dark: #ECE8DE;
+  
+  /* 30% Identitas Keraton / Hijau Gadung & Emas Pasir */
+  --c-gadung-dark: #12281D;
+  --c-gadung: #1B3B2B;
+  --c-gadung-light: #2A543E;
+  --c-gold: #D4AF37;
+  --c-gold-hover: #C59B27;
+  --c-gold-light: #F4E8C1;
+  
+  /* 10% Aksen Aksi / Terakota & Peringatan */
+  --c-terracotta: #D9532F;
+  --c-terracotta-hover: #BC3F1E;
+  --c-text-muted: #6A7B72;
+  
+  --shadow-card: 0 16px 40px rgba(18, 40, 29, 0.14);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--c-mori);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  color: var(--c-gadung-dark);
+}
+
+/* Latar Belakang Motif Batik Kawung Native */
+.batik-pattern-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--c-mori);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg stroke='%23D4AF37' stroke-width='0.9' fill='none' opacity='0.16'%3E%3Cellipse cx='30' cy='15' rx='7' ry='10'/%3E%3Cellipse cx='30' cy='45' rx='7' ry='10'/%3E%3Cellipse cx='15' cy='30' rx='10' ry='7'/%3E%3Cellipse cx='45' cy='30' rx='10' ry='7'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%231B3B2B' opacity='0.25'/%3E%3Ccircle cx='0' cy='0' r='3' fill='%231B3B2B' opacity='0.25'/%3E%3Ccircle cx='60' cy='0' r='3' fill='%231B3B2B' opacity='0.25'/%3E%3Ccircle cx='0' cy='60' r='3' fill='%231B3B2B' opacity='0.25'/%3E%3Ccircle cx='60' cy='60' r='3' fill='%231B3B2B' opacity='0.25'/%3E%3Cellipse cx='0' cy='15' rx='7' ry='10'/%3E%3Cellipse cx='0' cy='45' rx='7' ry='10'/%3E%3Cellipse cx='60' cy='15' rx='7' ry='10'/%3E%3Cellipse cx='60' cy='45' rx='7' ry='10'/%3E%3Cellipse cx='15' cy='0' rx='10' ry='7'/%3E%3Cellipse cx='45' cy='0' rx='10' ry='7'/%3E%3Cellipse cx='15' cy='60' rx='10' ry='7'/%3E%3Cellipse cx='45' cy='60' rx='10' ry='7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+/* CONTAINER SPLIT SCREEN */
+.login-container {
+  position: relative;
+  z-index: 1;
+  width: 92%;
+  max-width: 1040px;
+  min-height: 590px;
+  background-color: var(--c-mori-card);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+  border: 2px solid var(--c-gold);
+  display: flex;
+  overflow: hidden;
+}
+
+/* SISI KIRI (Branding & Gunungan Wayang) */
+.branding-side {
+  flex: 1.15;
+  background: linear-gradient(150deg, var(--c-gadung-dark) 0%, var(--c-gadung) 100%);
+  color: var(--c-mori);
+  padding: 44px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-right: 3px double var(--c-gold);
+}
+
+.watermark-batik {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='30' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.08' stroke-dasharray='3 2'/%3E%3Cellipse cx='40' cy='20' rx='8' ry='12' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.08'/%3E%3Cellipse cx='40' cy='60' rx='8' ry='12' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.08'/%3E%3Cellipse cx='20' cy='40' rx='12' ry='8' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.08'/%3E%3Cellipse cx='60' cy='40' rx='12' ry='8' stroke='%23D4AF37' stroke-width='1' fill='none' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.brand-header {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.logo-batik-svg {
+  width: 52px;
+  height: 52px;
+  filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.35));
+}
+
+.logo-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.aksara-jawa {
+  font-size: 1.05rem;
+  color: var(--c-gold);
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.logo-name {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+}
+
+.brand-tagline {
+  font-size: 0.88rem;
+  color: #C2D6CC;
+  margin-top: 4px;
+}
+
+/* ========================================================
+   HERO GUNUNGAN WAYANG (SMOOTH SLOW 3D FLIP)
+   ======================================================== */
+.ornament-hero {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin: 10px 0;
+  perspective: 1200px; /* Jarak pandang 3D lebih luas agar putaran natural */
+}
+
+.gunungan-svg {
+  width: 260px;
+  height: 300px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  /* Durasi 1.5s dengan kurva akselerasi & deselerasi yang sangat halus */
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              filter 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+}
+
+/* Efek saat kursor diarahkan ke Gunungan */
+.gunungan-svg:hover {
+  /* Berputar 180° perlahan sambil sedikit terangkat melayang */
+  transform: rotateY(180deg) translateY(-8px) scale(1.04);
+  /* Pendaran emas muncul bertahap */
+  filter: drop-shadow(0 14px 32px rgba(212, 175, 55, 0.4));
+}
+
+.philosophy-box {
+  position: relative;
+  z-index: 2;
+}
+
+.philosophy-border {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid var(--c-gold);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+}
+
+.philosophy-border .quote {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--c-gold-light);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.philosophy-border .sub-quote {
+  font-size: 0.76rem;
+  color: #A3BFB3;
+  line-height: 1.4;
+  display: block;
+}
+
+/* SISI KANAN (Form Login) */
+.form-side {
+  flex: 1;
+  padding: 44px 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-mori-card);
+  position: relative;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 370px;
+  position: relative;
+}
+
+.corner-batik-ornament {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 55px;
+  height: 55px;
+  pointer-events: none;
+}
+
+.welcome-badge {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--c-gadung);
+  background-color: rgba(212, 175, 55, 0.2);
+  border: 1px solid var(--c-gold);
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.card-header h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--c-gadung);
+  margin-bottom: 6px;
+}
+
+.card-header p {
+  font-size: 0.85rem;
+  color: var(--c-text-muted);
+  margin-bottom: 22px;
+  line-height: 1.35;
+}
+
+/* Alert Error (Try...Catch) */
+.alert-box {
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  animation: fadeIn 0.3s ease;
+}
+
+.alert-box.error {
+  background-color: #FDF2F0;
+  color: var(--c-terracotta);
+  border: 1px solid #F5C6BA;
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-gadung);
+  margin-bottom: 6px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 0.85rem;
+  opacity: 0.55;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 14px 12px 38px;
+  border: 1.5px solid var(--c-mori-dark);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: var(--c-gadung-dark);
+  background-color: #FAFAF7;
+  transition: var(--transition);
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  background-color: #FFFFFF;
+  border-color: var(--c-gadung);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  background-color: var(--c-gold);
+  color: var(--c-gadung-dark);
+  border: 1px solid #B89726;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+  margin-top: 10px;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--c-gold-hover);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.45);
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(27, 59, 43, 0.3);
+  border-top-color: var(--c-gadung-dark);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Demo Testing Box */
+.demo-box {
+  margin-top: 22px;
+  padding: 12px;
+  background-color: var(--c-mori);
+  border-radius: 8px;
+  border: 1px dashed var(--c-gold);
+  font-size: 0.78rem;
+  color: var(--c-gadung);
+}
+
+.demo-header {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.demo-box code {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--c-terracotta);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsif Mobile & Tablet */
+@media (max-width: 820px) {
+  .login-container {
+    flex-direction: column;
+    min-height: auto;
+    margin: 20px 0;
+  }
+  .branding-side {
+    padding: 32px 24px;
+    border-right: none;
+    border-bottom: 3px double var(--c-gold);
+  }
+  .ornament-hero {
+    display: none;
+  }
+  .form-side {
+    padding: 36px 24px;
+  }
+  .corner-batik-ornament {
+    display: none;
+  }
+}

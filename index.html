@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusaka Nusantara - Product Catalog</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="batik-pattern-bg"></div>
+
+  <header class="main-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand">
+        <svg class="nav-logo-batik" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="2 1"/>
+          <ellipse cx="24" cy="14" rx="7" ry="9" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.2)"/>
+          <ellipse cx="24" cy="34" rx="7" ry="9" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.2)"/>
+          <ellipse cx="14" cy="24" rx="9" ry="7" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.2)"/>
+          <ellipse cx="34" cy="24" rx="9" ry="7" stroke="#D4AF37" stroke-width="1.8" fill="rgba(212, 175, 55, 0.2)"/>
+          <circle cx="24" cy="24" r="3.5" fill="#D4AF37"/>
+          <circle cx="24" cy="24" r="1.5" fill="#1B3B2B"/>
+        </svg>
+        <div class="brand-text-box">
+          <span class="aksara-jawa">ꦥꦸꦱꦏ</span>
+          <span class="brand-name">Pusaka Nusantara</span>
+        </div>
+      </a>
+
+      <div class="search-wrapper">
+        <span class="search-icon-wrapper" aria-hidden="true">
+          <svg class="search-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Search products by title or category..." 
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="nav-actions">
+        <div class="user-greeting-box">
+          <span class="greeting-prefix">Welcome,</span>
+          <strong id="user-greeting" class="user-name">User</strong>
+        </div>
+
+        <div class="nav-right-group">
+          <button id="btn-cart" class="btn-cart-icon-only" aria-label="Shopping Cart">
+            <svg class="nav-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="cart-badge" class="badge">0</span>
+          </button>
+
+          <div class="dropdown-wrapper">
+            <button id="btn-burger" class="btn-burger" aria-label="Menu" aria-expanded="false">
+              <svg class="nav-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+            
+            <div id="burger-dropdown" class="burger-dropdown-menu" style="display: none;">
+              <button id="btn-logout" class="dropdown-item-logout">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-layout">
+    <section class="catalog-toolbar">
+      <div class="toolbar-group">
+        <label for="category-filter">Category:</label>
+        <div class="select-wrapper">
+          <select id="category-filter" class="custom-select">
+            <option value="all">All Categories</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="toolbar-group">
+        <label for="sort-filter">Sort By:</label>
+        <div class="select-wrapper">
+          <select id="sort-filter" class="custom-select">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating-desc">Rating: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <div id="global-error" class="alert-box error" style="display: none;" role="alert">
+      <span class="alert-tag">[Error]</span>
+      <span id="error-text">Failed to load product catalog from server.</span>
+    </div>
+
+    <div id="loading-spinner" class="loading-container">
+      <div class="spinner"></div>
+      <p>Loading products, please wait...</p>
+    </div>
+
+    <section id="product-grid" class="product-grid" aria-live="polite">
+    </section>
+
+    <div class="load-more-container">
+      <button id="btn-load-more" class="btn-load-more" style="display: none;">
+        Load More Products
+      </button>
+    </div>
+  </main>
+
+  <div id="product-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <button id="btn-close-modal" class="modal-close" aria-label="Close">X</button>
+      <div id="modal-content" class="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="cart-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card cart-modal-card">
+      <div class="cart-modal-header">
+        <h3>Shopping Cart</h3>
+        <button id="btn-close-cart" class="modal-close" aria-label="Close">X</button>
+      </div>
+      <div id="cart-content" class="modal-body"></div>
+      <div class="cart-modal-footer">
+        <div class="cart-total-box">
+          <span>Total Price:</span>
+          <strong id="cart-total-price">Rp 0</strong>
+        </div>
+        <button id="btn-clear-cart" class="btn-clear-cart">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
